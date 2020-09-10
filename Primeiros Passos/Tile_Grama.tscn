@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://primeira_graminha.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 16 )
+
+[node name="Tile_Grama" type="Node"]
+
+[node name="grama 0" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="grama 0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grama 0/StaticBody2D"]
+position = Vector2( 16, 16 )
+shape = SubResource( 1 )

@@ -1,0 +1,73 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://THAIGA-PARADA/Thaiga1.png" type="Texture" id=2]
+[ext_resource path="res://THAIGA-PARADA/Thaiga2.png" type="Texture" id=3]
+[ext_resource path="res://THAIGA-PARADA/Thaiga3.png" type="Texture" id=4]
+[ext_resource path="res://THAIGA-PARADA/Thaiga4.png" type="Texture" id=5]
+[ext_resource path="res://THAIGA-PARADA/Thaiga5.png" type="Texture" id=6]
+[ext_resource path="res://THAIGA-CORRENDO/Thaiga1.png" type="Texture" id=7]
+[ext_resource path="res://THAIGA-CORRENDO/Thaiga2.png" type="Texture" id=8]
+[ext_resource path="res://THAIGA-CORRENDO/Thaiga3.png" type="Texture" id=9]
+[ext_resource path="res://THAIGA-CORRENDO/Thaiga4.png" type="Texture" id=10]
+[ext_resource path="res://THAIGA-CORRENDO/Thaiga5.png" type="Texture" id=11]
+[ext_resource path="res://THAIGA-CORRENDO/Thaiga6.png" type="Texture" id=12]
+[ext_resource path="res://THAIGA-CORRENDO/Thaiga7.png" type="Texture" id=13]
+[ext_resource path="res://THAIGA-CORRENDO/Thaiga8.png" type="Texture" id=14]
+[ext_resource path="res://THAIGA-CORRENDO/Thaiga9.png" type="Texture" id=15]
+[ext_resource path="res://THAIGA-CORRENDO/Thaiga10.png" type="Texture" id=16]
+[ext_resource path="res://THAIGA-CORRENDO/Thaiga.png" type="Texture" id=17]
+[ext_resource path="res://grama.tres" type="TileSet" id=18]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "idle",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "run",
+"speed": 20.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+[node name="World" type="Node"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1024, 512 )
+
+[node name="Player" type="KinematicBody2D" parent="."]
+position = Vector2( 512, 288 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="AnimatedSprite" parent="Player"]
+position = Vector2( 5.00002, 3.8147e-06 )
+frames = SubResource( 1 )
+animation = "run"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2( 0, 6 )
+scale = Vector2( 2.2, 4.2 )
+shape = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+zoom = Vector2( 0.8, 0.8 )
+limit_smoothed = true
+offset_h = 0.04
+offset_v = 0.23
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 18 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 393245, 0, 0, 393246, 0, 0, 393247, 0, 0, 524296, 0, 0, 524323, 0, 0, 524324, 0, 0, 524325, 0, 0, 524326, 0, 0, 524327, 0, 0, 524328, 0, 0, 524329, 0, 0, 524330, 0, 0, 524331, 0, 0, 524332, 0, 0, 524333, 0, 0, 524334, 0, 0, 524335, 0, 0, 589831, 0, 0, 589849, 0, 0, 589850, 0, 0, 589851, 0, 0, 655367, 0, 0, 720904, 0, 0, 720910, 0, 0, 720911, 0, 0, 720912, 0, 0, 720913, 0, 0, 720914, 0, 0, 720916, 0, 0, 720917, 0, 0, 720918, 0, 0, 720919, 0, 0, 786440, 0, 0, 786466, 0, 0, 786467, 0, 0, 786468, 0, 0, 786469, 0, 0, 851977, 0, 0, 917514, 0, 0, 983051, 0, 0, 983069, 0, 0, 1048589, 0, 0, 1048590, 0, 0, 1048599, 0, 0, 1048605, 0, 0, 1048606, 0, 0, 1114127, 0, 0, 1114128, 0, 0, 1114129, 0, 0, 1114130, 0, 0, 1114131, 0, 0, 1114132, 0, 0, 1114133, 0, 0, 1114136, 0, 0, 1114137, 0, 0, 1114142, 0, 0, 1179679, 0, 0, 1179680, 0, 0, 1179686, 0, 0, 1179687, 0, 0, 1179688, 0, 0, 1179689, 0, 0, 1245217, 0, 0, 1245218, 0, 0, 1245219, 0, 0, 1245220, 0, 0, 1245221, 0, 0, 1245225, 0, 0, 1310762, 0, 0, 1310763, 0, 0, 1310764, 0, 0, 1310765, 0, 0, 1310766, 0, 0, 1310767, 0, 0, 1310768, 0, 0, 1376305, 0, 0 )
